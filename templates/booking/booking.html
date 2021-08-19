@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <script src="{% static '/js/booking.js' %}" defer></script>
+    <title>Booking</title>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div>
+        <label for="phone">Phone number</label>
+        <input type="tel" name="phone" id="phone" />
+      </div>
+
+      <div>
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" />
+      </div>
+
+      <button id="next_button">Next</button>
+
+      <div>
+        <label for="time">Time</label>
+        <input type="time" name="time" id="time" />
+      </div>
+
+      <button>Submit</button>
+    </div>
+  </body>
+</html>
