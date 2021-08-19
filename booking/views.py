@@ -8,7 +8,7 @@ def booking(request):
 
 
 @api_view(['POST'])
-def sendingPackets(request):
+def new_date(request):
 	date_value = request.data['date']
 	time_models = []
 	date = Date.objects.filter(date_field=date_value)
