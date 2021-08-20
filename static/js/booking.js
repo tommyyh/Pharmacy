@@ -8,13 +8,157 @@ const getElement = (tag) => {
   return element;
 };
 
-const dateInput = getElement('#date');
-const nextButton = getElement('#next_button');
+const nameInput = getElement('#booking__name');
+const emailInput = getElement('#booking__email');
+const msgInput = getElement('#booking__message');
+const phoneInput = getElement('#booking__phone');
+const nameLabel = getElement('#name_label');
+const emailLabel = getElement('#email_label');
+const msgLabel = getElement('#textarea_l');
+const phoneLabel = getElement('#phone_label');
+const button = getElement('.continue_button');
 
-nextButton.addEventListener('click', async () => {
-  const res = await axios.post('/new-date/', {
-    date: dateInput.value,
+(() => {
+  if (nameInput.value) {
+    nameLabel.style.top = '29%';
+    nameLabel.style.color = '#333333';
+    nameLabel.style.fontSize = '0.55rem';
+
+    nameLabel.innerHTML = 'Full Name';
+    nameInput.style.border = 'none';
+  }
+
+  if (emailInput.value) {
+    emailLabel.style.top = '29%';
+    emailLabel.style.color = '#333333';
+    emailLabel.style.fontSize = '0.55rem';
+
+    emailLabel.innerHTML = 'Email Address';
+    emailInput.style.border = 'none';
+  }
+
+  if (phoneInput.value) {
+    phoneLabel.style.top = '29%';
+    phoneLabel.style.color = '#333333';
+    phoneLabel.style.fontSize = '0.55rem';
+
+    phoneLabel.innerHTML = 'Phone Number';
+    phoneInput.style.border = 'none';
+  }
+
+  if (msgInput.value) {
+    msgLabel.style.top = '14%';
+    msgLabel.style.color = '#333333';
+    msgLabel.style.fontSize = '0.55rem';
+
+    msgLabel.innerHTML = 'Your Message';
+    msgInput.style.border = 'none';
+  }
+
+  // Adjust floating labels on focus
+  nameInput.addEventListener('focusin', () => {
+    nameLabel.style.top = '29%';
+    nameLabel.style.color = '#333333';
+    nameLabel.style.fontSize = '0.55rem';
+
+    nameLabel.innerHTML = 'Full Name';
+    nameInput.style.border = 'none';
   });
 
-  console.log(res.data.times_taken);
-});
+  nameInput.addEventListener('focusout', () => {
+    if (!nameInput.value) {
+      nameLabel.style.top = '42%';
+      nameLabel.style.color = '#464646';
+      nameLabel.style.fontSize = '0.81rem';
+    }
+  });
+
+  emailInput.addEventListener('focusin', () => {
+    emailLabel.style.top = '29%';
+    emailLabel.style.color = '#333333';
+    emailLabel.style.fontSize = '0.55rem';
+
+    emailLabel.innerHTML = 'Email Address';
+    emailInput.style.border = 'none';
+  });
+
+  emailInput.addEventListener('focusout', () => {
+    if (!emailInput.value) {
+      emailLabel.style.top = '42%';
+      emailLabel.style.color = '#464646';
+      emailLabel.style.fontSize = '0.81rem';
+    }
+  });
+
+  phoneInput.addEventListener('focusin', () => {
+    phoneLabel.style.top = '29%';
+    phoneLabel.style.color = '#333333';
+    phoneLabel.style.fontSize = '0.55rem';
+
+    phoneLabel.innerHTML = 'Phone Number';
+    phoneInput.style.border = 'none';
+  });
+
+  phoneInput.addEventListener('focusout', () => {
+    if (!phoneInput.value) {
+      phoneLabel.style.top = '42%';
+      phoneLabel.style.color = '#464646';
+      phoneLabel.style.fontSize = '0.81rem';
+    }
+  });
+
+  msgInput.addEventListener('focusin', () => {
+    msgLabel.style.top = '14%';
+    msgLabel.style.color = '#333333';
+    msgLabel.style.fontSize = '0.55rem';
+
+    msgLabel.innerHTML = 'Your Message';
+    msgInput.style.border = 'none';
+  });
+
+  msgInput.addEventListener('focusout', () => {
+    if (!msgInput.value) {
+      msgLabel.style.top = '19%';
+      msgLabel.style.color = '#464646';
+      msgLabel.style.fontSize = '0.81rem';
+    }
+  });
+
+  // Send message
+  button.addEventListener('click', async () => {
+    if (!nameInput.value) {
+      nameLabel.style.color = '#FF3C3C';
+      nameLabel.innerHTML = 'This field is required';
+      nameInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
+    if (!emailInput.value) {
+      emailLabel.style.color = '#FF3C3C';
+      emailLabel.innerHTML = 'This field is required';
+      emailInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
+    if (!phoneInput.value) {
+      phoneLabel.style.color = '#FF3C3C';
+      phoneLabel.innerHTML = 'This field is required';
+      phoneInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
+    const res = await axios.post('/booking/new-user/', {
+      name: nameInput.value,
+      email: emailInput.value,
+      phone: phoneInput.value,
+      msg: msgInput.value,
+    });
+
+    if (res.data.status === 200) {
+      window.location.href = '/booking/date/';
+    }
+  });
+})();

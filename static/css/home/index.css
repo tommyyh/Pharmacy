@@ -1,0 +1,21 @@
+@import url('../all/resets.css');
+@import url('../all/nav.css');
+
+.success_message_cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26%;
+  height: 3rem;
+  background: #23cf7f;
+  position: fixed;
+  right: 0;
+  top: 14vh;
+  transition: ease 200ms;
+}
+
+.success_message {
+  font-size: 0.84rem;
+  color: #fff;
+  font-weight: 500;
+}

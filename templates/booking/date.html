@@ -16,15 +16,15 @@
       src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
       defer
     ></script>
-    <script src="{% static '/js/booking.js' %}" defer></script>
-    <link rel="stylesheet" href="{% static '/css/booking/booking.css' %}" />
+    <script src="{% static '/js/date.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static '/css/booking/date.css' %}" />
     <title>Booking</title>
   </head>
   <body>
     <div class="container">
       <header>{% include 'all/nav.html' %}</header>
 
-      <main class="booking">{% include 'booking/form.html' %}</main>
+      <main class="booking">{% include 'booking/date_form.html' %}</main>
     </div>
   </body>
 </html>

@@ -6,7 +6,7 @@
 
 :root {
   --primary-color: #fff;
-  --primary-color2: #f5f5f5;
+  --primary-color2: #f3f3f3;
   --secondary-color: #000;
   --accent-color: #21a0a0;
   --accent-color2: #046865;
@@ -16,6 +16,7 @@
 body {
   font-family: var(--font-family);
   background: var(--primary-color2);
+  margin-bottom: 9rem;
 }
 
 button {

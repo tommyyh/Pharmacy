@@ -16,15 +16,19 @@
       src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
       defer
     ></script>
-    <script src="{% static '/js/booking.js' %}" defer></script>
-    <link rel="stylesheet" href="{% static '/css/booking/booking.css' %}" />
-    <title>Booking</title>
+    <script src="{% static '/js/home.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static '/css/home/index.css' %}" />
+    <title>Pharmacy • Home</title>
   </head>
   <body>
     <div class="container">
       <header>{% include 'all/nav.html' %}</header>
 
-      <main class="booking">{% include 'booking/form.html' %}</main>
+      {% if success %}
+      <div class="success_message_cont">
+        <h4 class="success_message">{{ success }}</h4>
+      </div>
+      {% endif %}
     </div>
   </body>
 </html>
