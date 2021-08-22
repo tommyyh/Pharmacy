@@ -1,3 +1,5 @@
+@import url('./footer.css');
+
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +19,6 @@
 body {
   font-family: var(--font-family);
   background: var(--primary-color2);
-  margin-bottom: 9rem;
 }
 
 button {

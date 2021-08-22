@@ -1,7 +1,16 @@
 @import url('../all/resets.css');
 @import url('../all/nav.css');
+@import url('./form.css');
+
+.google_maps_p {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 25vh;
+}
 
 .google-maps {
+  width: 86%;
   position: relative;
   padding-bottom: 48%;
   height: 0;
@@ -10,6 +19,7 @@
 
 .google-maps iframe {
   position: absolute;
+  left: 50%;
   top: 0;
   left: 0;
   width: 100% !important;
