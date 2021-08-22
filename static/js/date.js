@@ -172,28 +172,24 @@ continueBooking.addEventListener('click', async () => {
       // Reset the previous ones
       timeItems.forEach((timeItem) => {
         timeItem.style.background = '#eeeeee';
-        timeItem.children[0].style.color = '#000';
       });
 
       if (e.target.className === 'date_picker_item') {
         // Re-assign value
         selectedTime = e.target.querySelector('h6').textContent;
 
-        // Show user that its selected
-        e.target.style.color = '#fff';
-        e.target.style.background = '#21a0a0';
+        e.target.style.background = '#ffb498';
       } else {
         // Re-assign value
         selectedTime = e.target.textContent;
 
-        // Show user that its selected
-        e.target.style.color = '#fff';
-        e.target.parentNode.style.background = '#21a0a0';
+        e.target.parentNode.style.background = '#ffb498';
       }
 
       bookAppointment.style.background = '#046865';
       bookAppointment.style.cursor = 'pointer';
       bookAppointment.disabled = false;
+      bookAppointment.innerHTML = 'Book appointment';
     });
   });
 

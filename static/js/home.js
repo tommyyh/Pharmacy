@@ -9,5 +9,7 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 const successMsg = document.querySelector('.success_message_cont');
 
 setTimeout(() => {
-  successMsg.style.right = '-26%';
+  if (successMsg) {
+    successMsg.style.right = '-26%';
+  }
 }, 5000);
