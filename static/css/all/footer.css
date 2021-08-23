@@ -3,14 +3,14 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 54vh;
+  height: 60vh;
   background: #1b9898;
   margin-top: 27vh;
-  padding: 3.2% 7% 3.2% 7%;
+  padding: 5% 7% 3.2% 7%;
 }
 
 footer h3 {
-  font-size: 2.6rem;
+  font-size: 2rem;
   color: #fff;
 }
 
@@ -20,8 +20,8 @@ footer h3 {
 
 .footer__top ul li {
   display: inline-block;
-  font-size: 0.97rem;
-  margin-right: 1.33rem;
+  font-size: 0.82rem;
+  margin-right: 0.73rem;
 }
 
 .footer__top ul a {
@@ -31,7 +31,7 @@ footer h3 {
 
 .footer__bot {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -48,10 +48,14 @@ footer h3 {
   margin-bottom: 0.8rem;
 }
 
+.footer__rigth {
+  margin-top: 14vh;
+}
+
 .footer__rigth li {
   display: inline-block;
-  font-size: 1.02rem;
-  margin-right: 1.33rem;
+  font-size: 0.86rem;
+  margin-right: 0.75rem;
   color: #efefef;
 }
 
@@ -80,20 +84,20 @@ footer h3 {
   fill: #ffb59a;
 }
 
-@media all and (max-width: 480px) {
+@media all and (min-width: 1050px) {
   footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    height: 60vh;
+    height: 54vh;
     background: #1b9898;
     margin-top: 27vh;
-    padding: 5% 7% 3.2% 7%;
+    padding: 3.2% 7% 3.2% 7%;
   }
 
   footer h3 {
-    font-size: 2rem;
+    font-size: 2.6rem;
     color: #fff;
   }
 
@@ -103,8 +107,8 @@ footer h3 {
 
   .footer__top ul li {
     display: inline-block;
-    font-size: 0.82rem;
-    margin-right: 0.73rem;
+    font-size: 0.97rem;
+    margin-right: 1.33rem;
   }
 
   .footer__top ul a {
@@ -114,7 +118,9 @@ footer h3 {
 
   .footer__bot {
     display: flex;
-    flex-direction: column;
+    flex-direction: initial;
+    justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
   }
 
@@ -131,14 +137,10 @@ footer h3 {
     margin-bottom: 0.8rem;
   }
 
-  .footer__rigth {
-    margin-top: 14vh;
-  }
-
   .footer__rigth li {
     display: inline-block;
-    font-size: 0.86rem;
-    margin-right: 0.75rem;
+    font-size: 1.02rem;
+    margin-right: 1.33rem;
     color: #efefef;
   }
 

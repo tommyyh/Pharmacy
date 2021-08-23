@@ -1,21 +1,58 @@
 @import url('../all/resets.css');
 @import url('../all/nav.css');
+@import url('./wwd.css');
 
-.success_message_cont {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26%;
-  height: 3rem;
-  background: #23cf7f;
-  position: fixed;
-  right: 0;
-  top: 14vh;
-  transition: ease 200ms;
-}
+@media all and (min-width: 1050px) {
+  .success_message_cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26%;
+    height: 3rem;
+    background: #23cf7f;
+    position: fixed;
+    right: 0;
+    top: 14vh;
+    transition: ease 200ms;
+  }
 
-.success_message {
-  font-size: 0.84rem;
-  color: #fff;
-  font-weight: 500;
+  .success_message {
+    font-size: 0.84rem;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../images/vaccine-img.png');
+    padding: 8% 0 0 7%;
+  }
+
+  .hero h1 span {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 3.18rem;
+    color: #fff;
+  }
+
+  .hero button {
+    width: 18.1rem;
+    height: 4.62rem;
+    background: var(--accent-color2);
+    color: #fff;
+    font-size: 1.27rem;
+    font-weight: 400;
+    border: none;
+    margin-top: 3rem;
+  }
+
+  .hero button:hover {
+    background: #045a57;
+  }
 }

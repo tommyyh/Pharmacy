@@ -12,6 +12,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="shortcut icon"
+      href="{% static '/images/svg/rimmingtons.ico' %}"
+      type="image/x-icon"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
       defer
@@ -30,6 +35,18 @@
         <h4 class="success_message">{{ success }}</h4>
       </div>
       {% endif %}
+
+      <main class="hero">
+        <h1>
+          <span>There’s Nothing More Important Than</span
+          ><span>Your Health. Book An Appointment And</span>Fight Against The
+          Disease
+        </h1>
+
+        <button>Book Appointment</button>
+      </main>
+
+      <section class="strengths">{% include 'home/wwd.html' %}</section>
     </div>
   </body>
 </html>

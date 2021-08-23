@@ -10,3 +10,19 @@
       nav.className === 'burger burger_open' ? 'hidden' : 'initial';
   });
 })();
+
+(() => {
+  const nav = document.querySelector('nav');
+
+  if (window.location.pathname === '/') {
+    nav.classList.add('nav_trans');
+  }
+
+  if (window.location.pathname === '/') {
+    window.addEventListener('scroll', () => {
+      const position = window.scrollY > 0;
+
+      nav.classList.toggle('nav_scroll', position);
+    });
+  }
+})();

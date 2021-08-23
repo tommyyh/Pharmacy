@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
+  width: 100%;
   height: 108.5vh;
   background: #fff;
   border-radius: 0.3rem;
@@ -18,11 +18,11 @@
 }
 
 .booking__cont h1 {
-  font-size: 1.66rem;
+  font-size: 1.45rem;
 }
 
 .booking__form {
-  width: 75%;
+  width: 90%;
   padding-top: 5.4%;
 }
 
@@ -109,7 +109,7 @@
   display: initial;
 }
 
-@media all and (max-width: 480px) {
+@media all and (min-width: 1050px) {
   .booking {
     display: flex;
     justify-content: center;
@@ -122,7 +122,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 40%;
     height: 108.5vh;
     background: #fff;
     border-radius: 0.3rem;
@@ -130,11 +130,11 @@
   }
 
   .booking__cont h1 {
-    font-size: 1.45rem;
+    font-size: 1.66rem;
   }
 
   .booking__form {
-    width: 90%;
+    width: 75%;
     padding-top: 5.4%;
   }
 
