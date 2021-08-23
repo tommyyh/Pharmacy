@@ -16,17 +16,6 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken';
   const emailLabel = getElemet('#email_label');
   const msgLabel = getElemet('#msg_label');
   const button = getElemet('.send_button');
-  const title = getElemet('#socials_title');
-
-  const changeTitle = () => {
-    if (window.innerWidth > 1025) {
-      title.innerHTML = 'Socials & Informations';
-    } else {
-      title.innerHTML = 'Socials & Info';
-    }
-  };
-
-  window.addEventListener('resize', changeTitle);
 
   // Adjust floating labels on focus
   nameInput.addEventListener('focusin', () => {
@@ -81,5 +70,82 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken';
       msgLabel.style.color = '#000';
       msgLabel.style.fontSize = '0.81rem';
     }
+  });
+
+  // Send message
+  button.addEventListener('click', () => {
+    if (!nameInput.value) {
+      nameLabel.style.color = '#FF3C3C';
+      nameLabel.innerHTML = 'This field is required';
+      nameInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
+    if (!emailInput.value) {
+      emailLabel.style.color = '#FF3C3C';
+      emailLabel.innerHTML = 'This field is required';
+      emailInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
+    if (!msgInput.value) {
+      msgLabel.style.color = '#FF3C3C';
+      msgLabel.innerHTML = 'This field is required';
+      msgInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
+    (async () => {
+      button.innerHTML = 'Sending...';
+
+      const res = await axios.post('/contact/send-message/', {
+        name: nameInput.value,
+        email: emailInput.value,
+        msg: msgInput.value,
+      });
+
+      // if (res.data.status === 400) {
+      //   emailLabel.style.color = '#FF3C3C';
+      //   emailLabel.innerHTML = 'Email does not exist';
+      //   emailInput.style.border = '0.5px solid #FF3C3C';
+
+      //   button.innerHTML = 'Send Message';
+
+      //   return;
+      // }
+
+      if (res.data.status === 200) {
+        nameInput.value = '';
+        emailInput.value = '';
+        msgInput.value = '';
+
+        emailLabel.style.top = '46.5%';
+        emailLabel.style.color = '#000';
+        emailLabel.style.fontSize = '0.81rem';
+
+        nameLabel.style.top = '46.5%';
+        nameLabel.style.color = '#000';
+        nameLabel.style.fontSize = '0.81rem';
+
+        msgLabel.style.top = '21.5%';
+        msgLabel.style.color = '#000';
+        msgLabel.style.fontSize = '0.81rem';
+
+        button.innerHTML = 'Send Message';
+
+        // Show success message
+        const success = getElemet('#success');
+
+        success.style.display = 'initial';
+
+        // Unshow message after 4 seconds
+        setTimeout(() => {
+          success.style.display = 'none';
+        }, 4000);
+      }
+    })();
   });
 })();
