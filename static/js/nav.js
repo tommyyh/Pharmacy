@@ -20,7 +20,7 @@
 
   if (window.location.pathname === '/') {
     window.addEventListener('scroll', () => {
-      const position = window.scrollY > 0;
+      const position = window.scrollY > 140;
 
       nav.classList.toggle('nav_scroll', position);
     });

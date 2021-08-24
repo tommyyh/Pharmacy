@@ -47,6 +47,37 @@
       </main>
 
       <section class="strengths">{% include 'home/wwd.html' %}</section>
+
+      <section class="vaccines">
+        <img src="{% static '/images/vaccine-needle.png' %}" alt="Vaccine" />
+
+        <div>
+          <h2>What Are Vaccines</h2>
+          <p>
+            A vaccine is a biological preparation that provides active acquired
+            immunity to a particular infectious disease and is often made from
+            weakened or killed forms of the microbe.
+          </p>
+        </div>
+      </section>
+
+      <section class="info">
+        <div class="info__cont">
+          <img src="{% static '/images/svg/time.svg' %}" alt="Time icon" />
+          <h4><span>Each appointment should</span> only last 5 minutes.</h4>
+        </div>
+
+        <div class="info__cont">
+          <img src="{% static '/images/svg/health.svg' %}" alt="Time icon" />
+          <h4>
+            <span>We promise you safety</span> health from these vaccines.
+          </h4>
+        </div>
+      </section>
+
+      <section>{% include 'home/map.html' %}</section>
+
+      <footer>{% include 'all/footer.html' %}</footer>
     </div>
   </body>
 </html>

@@ -7,7 +7,7 @@
 }
 
 .strengths h2 {
-  font-size: 1.7rem;
+  font-size: 2.2rem;
   position: relative;
 }
 
@@ -15,10 +15,10 @@
   content: '';
   position: absolute;
   width: 2rem;
-  height: 1px;
-  background: var(--accent-color);
-  left: 43%;
-  margin-top: 2.7rem;
+  height: 2px;
+  background: var(--secondary-color2);
+  left: 42%;
+  margin-top: 4rem;
 }
 
 .strengths__card {
@@ -57,7 +57,7 @@
   font-size: 0.85rem;
   line-height: 1.45rem;
   font-weight: 200;
-  color: #b6b6b6;
+  color: #818181;
   text-align: center;
   margin: 0.5rem 15% 0 15%;
 }
@@ -127,7 +127,7 @@
     font-size: 0.92rem;
     line-height: 1.68rem;
     font-weight: 200;
-    color: #b6b6b6;
+    color: #818181;
     text-align: center;
     margin: 0.5rem 10% 0 10%;
   }
@@ -153,7 +153,7 @@
     font-size: 0.85rem;
     line-height: 1.45rem;
     font-weight: 200;
-    color: #b6b6b6;
+    color: #818181;
     text-align: center;
     margin: 0.7rem 20% 0 20%;
   }
