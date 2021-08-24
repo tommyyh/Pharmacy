@@ -146,7 +146,7 @@ continueBooking.addEventListener('click', async () => {
     date: dateInput.value,
   });
 
-  const available_times = res.data.times_taken;
+  const available_times = res.data.available_times;
 
   datePickerSuccess.classList.add('date_picker_success_on');
 

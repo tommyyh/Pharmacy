@@ -20,14 +20,30 @@
     </div>
 
     <div class="booking__input">
-      <label for="booking__message" id="textarea_l">Message (Optional)</label>
-      <textarea
-        name="msg"
-        id="booking__message"
-        cols="30"
-        rows="10"
-        value="{{ msg }}"
-      ></textarea>
+      <label for="booking__date" id="date_label">Date Of Birth</label>
+      <input
+        type="text"
+        name="birth"
+        id="booking__date"
+        onfocus="(this.type='date')"
+        onfocusout="focusOutDate(this)"
+        value="{{ birth }}"
+      />
+    </div>
+
+    <div class="booking__input">
+      <label for="booking__postal" id="postal_label">Postal Code</label>
+      <input
+        type="text"
+        name="postal"
+        id="booking__postal"
+        value="{{ postal }}"
+      />
+    </div>
+
+    <div class="booking__input">
+      <label for="booking__nhs" id="nhs_label">NHS Number</label>
+      <input type="number" name="nhs" id="booking__nhs" value="{{ nhs }}" />
     </div>
 
     <button class="continue_button">Continue</button>

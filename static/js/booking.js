@@ -12,11 +12,23 @@ const nameInput = getElement('#booking__name');
 const emailInput = getElement('#booking__email');
 const msgInput = getElement('#booking__message');
 const phoneInput = getElement('#booking__phone');
+const birthInput = getElement('#booking__date');
+const postalInput = getElement('#booking__postal');
+const nhsInput = getElement('#booking__nhs');
 const nameLabel = getElement('#name_label');
 const emailLabel = getElement('#email_label');
 const msgLabel = getElement('#textarea_l');
 const phoneLabel = getElement('#phone_label');
+const birthLabel = getElement('#date_label');
+const postalLabel = getElement('#postal_label');
+const nhsLabel = getElement('#nhs_label');
 const button = getElement('.continue_button');
+
+const focusOutDate = (e) => {
+  if (!e.value) {
+    e.type = 'text';
+  }
+};
 
 (() => {
   if (nameInput.value) {
@@ -46,13 +58,32 @@ const button = getElement('.continue_button');
     phoneInput.style.border = 'none';
   }
 
-  if (msgInput.value) {
-    msgLabel.style.top = '14%';
-    msgLabel.style.color = '#333333';
-    msgLabel.style.fontSize = '0.55rem';
+  if (birthInput.value) {
+    birthLabel.style.top = '29%';
+    birthLabel.style.color = '#333333';
+    birthLabel.style.fontSize = '0.55rem';
 
-    msgLabel.innerHTML = 'Your Message';
-    msgInput.style.border = 'none';
+    birthLabel.innerHTML = 'Phone Number';
+    birthInput.style.border = 'none';
+    birthInput.type = 'date';
+  }
+
+  if (postalInput.value) {
+    postalLabel.style.top = '29%';
+    postalLabel.style.color = '#333333';
+    postalLabel.style.fontSize = '0.55rem';
+
+    postalLabel.innerHTML = 'Phone Number';
+    postalInput.style.border = 'none';
+  }
+
+  if (nhsInput.value) {
+    nhsLabel.style.top = '29%';
+    nhsLabel.style.color = '#333333';
+    nhsLabel.style.fontSize = '0.55rem';
+
+    nhsLabel.innerHTML = 'Phone Number';
+    nhsInput.style.border = 'none';
   }
 
   // Adjust floating labels on focus
@@ -107,20 +138,54 @@ const button = getElement('.continue_button');
     }
   });
 
-  msgInput.addEventListener('focusin', () => {
-    msgLabel.style.top = '14%';
-    msgLabel.style.color = '#333333';
-    msgLabel.style.fontSize = '0.55rem';
+  birthInput.addEventListener('focusin', () => {
+    birthLabel.style.top = '29%';
+    birthLabel.style.color = '#333333';
+    birthLabel.style.fontSize = '0.55rem';
 
-    msgLabel.innerHTML = 'Your Message';
-    msgInput.style.border = 'none';
+    birthLabel.innerHTML = 'Date Of Birth';
+    birthInput.style.border = 'none';
   });
 
-  msgInput.addEventListener('focusout', () => {
-    if (!msgInput.value) {
-      msgLabel.style.top = '19%';
-      msgLabel.style.color = '#464646';
-      msgLabel.style.fontSize = '0.81rem';
+  birthInput.addEventListener('focusout', () => {
+    if (!birthInput.value) {
+      birthLabel.style.top = '42%';
+      birthLabel.style.color = '#464646';
+      birthLabel.style.fontSize = '0.81rem';
+    }
+  });
+
+  postalInput.addEventListener('focusin', () => {
+    postalLabel.style.top = '29%';
+    postalLabel.style.color = '#333333';
+    postalLabel.style.fontSize = '0.55rem';
+
+    postalLabel.innerHTML = 'Postal Code';
+    postalInput.style.border = 'none';
+  });
+
+  postalInput.addEventListener('focusout', () => {
+    if (!postalInput.value) {
+      postalLabel.style.top = '42%';
+      postalLabel.style.color = '#464646';
+      postalLabel.style.fontSize = '0.81rem';
+    }
+  });
+
+  nhsInput.addEventListener('focusin', () => {
+    nhsLabel.style.top = '29%';
+    nhsLabel.style.color = '#333333';
+    nhsLabel.style.fontSize = '0.55rem';
+
+    nhsLabel.innerHTML = 'NHS Number';
+    nhsInput.style.border = 'none';
+  });
+
+  nhsInput.addEventListener('focusout', () => {
+    if (!nhsInput.value) {
+      nhsLabel.style.top = '42%';
+      nhsLabel.style.color = '#464646';
+      nhsLabel.style.fontSize = '0.81rem';
     }
   });
 
@@ -150,11 +215,37 @@ const button = getElement('.continue_button');
       return;
     }
 
+    if (!birthInput.value) {
+      birthLabel.style.color = '#FF3C3C';
+      birthLabel.innerHTML = 'This field is required';
+      birthInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
+    if (!postalInput.value) {
+      postalLabel.style.color = '#FF3C3C';
+      postalLabel.innerHTML = 'This field is required';
+      postalInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
+    if (!nhsInput.value) {
+      nhsLabel.style.color = '#FF3C3C';
+      nhsLabel.innerHTML = 'This field is required';
+      nhsInput.style.border = '0.5px solid #FF3C3C';
+
+      return;
+    }
+
     const res = await axios.post('/booking/new-user/', {
       name: nameInput.value,
       email: emailInput.value,
       phone: phoneInput.value,
-      msg: msgInput.value,
+      birth: birthInput.value,
+      postal: postalInput.value,
+      nhs: nhsInput.value,
     });
 
     if (res.data.status === 200) {

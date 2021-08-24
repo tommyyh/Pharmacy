@@ -7,6 +7,19 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 })();
 
 (() => {
+  const popup = document.querySelector('.popup');
+  const cross = document.querySelector('.cross');
+
+  cross.addEventListener('click', () => {
+    popup.style.right = '-27%';
+  });
+
+  setTimeout(() => {
+    popup.style.right = '0%';
+  }, 650);
+})();
+
+(() => {
   const successMsg = document.querySelector('.success_message_cont');
 
   setTimeout(() => {

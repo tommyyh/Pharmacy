@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import User, Time
+from .models import User
 from datetime import datetime
 from django.utils.decorators import decorator_from_middleware
 from .middlewares import Verify
@@ -10,13 +10,17 @@ def booking(request):
 	name = request.session['name'] if 'name' in request.session else ''
 	email = request.session['email'] if 'email' in request.session else ''
 	phone = request.session['phone'] if 'phone' in request.session else ''
-	msg = request.session['msg'] if 'msg' in request.session else ''
+	birth = request.session['birth'] if 'birth' in request.session else ''
+	postal = request.session['postal'] if 'postal' in request.session else ''
+	nhs = request.session['nhs'] if 'nhs' in request.session else ''
 
 	context = {
 		'name': name,
 		'email': email,
 		'phone': phone,
-		'msg': msg,
+		'birth': birth,
+		'postal': postal,
+		'nhs': nhs,
 	}
 
 	return render(request, 'booking/booking.html', context)
@@ -42,7 +46,7 @@ def date(request):
 @api_view(['POST'])
 def new_date(request):
 	date_value = request.data['date']
-	time_models = []
+	time_taken = []
 	date = User.objects.filter(date=date_value)
 	time = [
 		'9:00', '9:05', '9:10', '9:15', '9:20', '9:25', '9:30', '9:35', '9:40', '9:45', '9:50', '9:55', '10:00', '10:05', '10:10', '10:15', '10:20', '10:25', '10:30', '10:35', '10:40', '10:45', '10:50', '10:55',
@@ -53,30 +57,30 @@ def new_date(request):
 	];
 
 	if not date:
-		return Response({ 'times_taken': time })
+		return Response({ 'available_times': time })
 	else:
 		# Take all associated models and put them into a list
 		for x in date:
-			time_records = x.user.all()
+			count = User.objects.filter(date=date_value, time=x.time).count()
 
-			for y in time_records:
-				time_models.append(y.time)
+			if count >= 3:
+				time_taken.append(x.time)
 
 		# Make a list containing only the values
-		times_taken = [x for x in time if x not in time_models]
+		available_times = [x for x in time if x not in time_taken]
 
-		return Response({ 'times_taken': times_taken })
+		print(time_taken)
+
+		return Response({ 'available_times': available_times })
 
 @api_view(['POST'])
 def new_user(request):
 	request.session['name'] = request.data['name']
 	request.session['email'] = request.data['email']
 	request.session['phone'] = request.data['phone']
-	
-	if not request.data['msg']:
-		request.session['msg'] = ''
-	else:
-		request.session['msg'] = request.data['msg']
+	request.session['birth'] = request.data['birth']
+	request.session['postal'] = request.data['postal']
+	request.session['nhs'] = request.data['nhs']
 
 	return Response({ 'status': 200 })
 
@@ -85,22 +89,26 @@ def book_appointment(request):
 	name = request.session['name']
 	email = request.session['email']
 	phone = request.session['phone']
-	msg = request.session['msg']
+	birth = request.session['birth']
+	postal = request.session['postal']
+	nhs = request.session['nhs']
 	date = request.data['date']
 	time = request.data['time']
 
 	# Save to the db
-	user = User(name=name, email=email, phone=phone, message=msg, date=date)
+	user = User(
+		name=name, email=email, phone=phone, date=date, time=time, postal_code=postal,
+		nhs_number=nhs, birth_date=birth
+	)
 	user.save()
-
-	time = Time(time=time, user=user)
-	time.save()
 
 	# Clear session
 	request.session['name'] = ''
 	request.session['email'] = ''
 	request.session['phone'] = ''
-	request.session['msg'] = ''
+	request.session['birth'] = ''
+	request.session['postal'] = ''
+	request.session['nhs'] = ''
 
 	# Save success message
 	request.session['success'] = 'You Successfully Booked an Appointment'
